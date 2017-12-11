@@ -2,7 +2,7 @@
 // %name: CryptoUtil1.java %
 // Desc :
 //    
-// Copyright (�) 1994-2006 All Rights Reserved, Unauthorized Duplication
+// Copyright (C) 1994-2006 All Rights Reserved, Unauthorized Duplication
 // Prohibited
 // Program Property of Embarcadero Technologies, Inc.
 // *****************************************************************************

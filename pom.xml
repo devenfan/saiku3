@@ -406,10 +406,15 @@
 			<artifactId>jbehave-core</artifactId>
 			<version>${jbehave.version}</version>
 		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>mondrian-data-foodmart-hsql</groupId>-->
+			<!--<artifactId>mondrian-data-foodmart-hsql</artifactId>-->
+			<!--<version>0.1</version>-->
+		<!--</dependency>-->
 		<dependency>
-			<groupId>mondrian-data-foodmart-hsql</groupId>
-			<artifactId>mondrian-data-foodmart-hsql</artifactId>
-			<version>0.1</version>
+			<groupId>pentaho</groupId>
+			<artifactId>mondrian-data-foodmart-hsqldb</artifactId>
+			<version>0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -1089,5 +1094,63 @@
 			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
-	
+
+	<build>
+		<!-- 默认源代码和资源文件目录配置 -->
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+
+		<!-- 扩展源代码和资源文件目录 -->
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.12</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
+								<source>${basedir}/src/main/saiku-olap-util</source>
+								<source>${basedir}/src/main/saiku-service</source>
+								<source>${basedir}/src/main/saiku-web</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-resource</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<!-- 我们可以通过在这里添加多个resource节点 -->
+								<resource>
+									<directory>${basedir}/src/resources</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
